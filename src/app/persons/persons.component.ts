@@ -8,11 +8,16 @@ import { PersonsService } from './persons.service';
 })
 export class PersonsComponent implements OnInit {
 
+
   personList: string [] = [];
 
   constructor(private personService: PersonsService) {}
 
   ngOnInit(): void {
     this.personList = this.personService.persons;
+  }
+
+  onRemovePerson(person: string) {
+    this.personService.deletePerson(person);
   }
 }
