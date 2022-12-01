@@ -6,8 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./person-input.component.css']
 })
 export class PersonInputComponent {
-  onCreateUser(personName: string) {
-    console.log(`person created ${personName}`);
+
+  enteredPersonName: string = '';
+
+  onCreateUser() {
+    console.log(`person created ${this.enteredPersonName}`);
+    this.enteredPersonName = '';
   }
 
 }
