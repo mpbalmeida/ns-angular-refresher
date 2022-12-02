@@ -9,6 +9,7 @@ import { PersonsService } from './persons.service';
 })
 export class PersonsComponent implements OnInit, OnDestroy {
 
+  isLoaded: boolean = false;
   private personListSubscription: Subscription = new Subscription;
   personList: string [] = [];
 
@@ -17,7 +18,9 @@ export class PersonsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.personListSubscription = this.personService.personsChanged.subscribe(persons => {
       this.personList = persons;
+      this.isLoaded = true;
     });
+    this.isLoaded = false;
     this.personService.fetchPersons();
   }
 
