@@ -15,10 +15,10 @@ export class PersonsComponent implements OnInit, OnDestroy {
   constructor(private personService: PersonsService) {}
 
   ngOnInit(): void {
-    this.personList = this.personService.persons;
     this.personListSubscription = this.personService.personsChanged.subscribe(persons => {
       this.personList = persons;
     });
+    this.personService.fetchPersons();
   }
 
   ngOnDestroy(): void {
